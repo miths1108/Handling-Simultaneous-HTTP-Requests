@@ -1,0 +1,33 @@
+Handling Simultaneous HTTP Requests
+
+This project deals with handling the simultaneous requests that a server receives from multiple clients...
+
+To implement on local system following assumptions have been taken:
+
+1. the server has got several pending requests..(to implement this, initially the requests have been stored so that they can be handled at the same time).
+2. client is sending the filename it requires to the server as the request.
+3. file size determines the job duration..more the size of the requested file, more is its burst time.
+
+Since the basic moto is to compare the algorithms a stopping criteria has been decided after which the server will first respond to all the pending requests and then will take any more requests..
+
+Algorithms:
+
+following algorithms have been implemented:
+1. First Come First Serve (FCFS).
+2. Shortest Job First (SJF).
+3. Round Robin.
+4. Self created algorithm namely, Best Job First(BJF).
+
+Best Job First:
+This algorithm gives importance to both the requests that have come earlier and also to those which have lesser burst time...
+it calculates the priorities on these basis and then accordingly respond to them.
+
+To run the code:
+1. You can use single client sending multiple requests(files in every request).
+2. Since coded in python, it should be installed and then can easily be run.
+
+Run the server code in a separate terminal and the client in different.(different terminals corresponding to every client).
+to run the server $python tcpserver.py
+to run the client $python tcpclient.py
+
+After the communication has been established various requests(filenames) can be sent from the client to the server.
