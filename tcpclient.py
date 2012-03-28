@@ -1,7 +1,8 @@
 import socket
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client_socket.connect(("localhost", 5000))
-while 1:
+i=0
+while i in range (3):
         data = raw_input ( "SEND( TYPE q or Q to Quit):" )
         if (data <> 'Q' and data <> 'q'):
             client_socket.send(data)
@@ -9,4 +10,8 @@ while 1:
             client_socket.send(data)
             client_socket.close()
             break;
-            
+	i+=1
+while 1:
+	data = client_socket.recv(512)
+	if(data!= ''):
+		print "RECIEVED:" , data

@@ -18,6 +18,7 @@ def bjf(bu):
 	wtime=0
 	priority=0
 	i=0
+	global client_socket
 	for key,(sno,size) in sorted(bu.iteritems(), key=lambda x: x[1][1]):
 		priority=sno+i
 		bu[key]=sno,size,priority
@@ -25,7 +26,10 @@ def bjf(bu):
 	for key,(sno,size,priority) in sorted(bu.iteritems(), key=lambda x: x[1][2]):
 		print "waiting time to process",key,"is:",wtime
 		wtime+=size
-
+		fp=open(key,'r')
+		content=fp.read()
+		client_socket.send(content)
+		
 
 def roundrobin(bu):
 	wt=[0 for i in range(len(bu))]
